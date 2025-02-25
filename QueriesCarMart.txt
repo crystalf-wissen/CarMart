@@ -1,0 +1,28 @@
+** A LIST OF SQL QUERIES **
+
+--creating car
+CREATE TABLE car (
+    carID SERIAL PRIMARY KEY,
+    company VARCHAR(100) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    model VARCHAR(100) NOT NULL,
+    seater INTEGER NOT NULL,
+    fuelType VARCHAR(50) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    sold BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+-- insert through application
+insert into car (company, type, model, seater, fuelType, price, sold) values (?, ?, ?, ?, ?, ?, ?)
+
+-- select commands through application
+select * from car where sold = false
+select * from car where company ilike ?
+select * from car where type ilike ?
+select * from car where price >= ? and price <= ?
+select * from car where carID = ?
+select * from car where sold = true
+
+-- update commands through application
+update car set price = ? where carID = ?
+update car set sold = true where sold = false
